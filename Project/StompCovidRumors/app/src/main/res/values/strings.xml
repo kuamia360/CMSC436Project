@@ -2,4 +2,8 @@
     <string name="app_name">Stomp Covid Rumors</string>
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
+    <string name="create_account">Create Account</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="home">Home</string>
 </resources>

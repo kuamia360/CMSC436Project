@@ -21,6 +21,9 @@
         <activity
             android:name=".CreateAccountActivity" >
         </activity>
+        <activity
+            android:name=".HomeActivity" >
+        </activity>
     </application>
 
 </manifest>
