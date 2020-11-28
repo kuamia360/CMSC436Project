@@ -7,4 +7,9 @@
     <string name="password">Password</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
+    <string name="new_post">Add Post</string>
+    <string name="what">What happened?</string>
+    <string name="where">Where?</string>
+    <string name="profile">Profile</string>
+    <string name="save">Save</string>
 </resources>

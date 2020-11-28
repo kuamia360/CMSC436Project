@@ -27,6 +27,12 @@
         <activity
             android:name=".SearchActivity" >
         </activity>
+        <activity
+            android:name=".NewPostActivity" >
+        </activity>
+        <activity
+            android:name=".ProfileActivity" >
+        </activity>
     </application>
 
 </manifest>
