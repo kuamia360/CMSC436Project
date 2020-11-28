@@ -1,16 +1,16 @@
 package com.example.stompcovidrumors
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import android.content.Intent
 
-class SearchActivity : Activity() {
+class ProfileActivity : Activity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.search)
+        setContentView(R.layout.profile)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
     }
@@ -25,6 +25,8 @@ class SearchActivity : Activity() {
             }
             R.id.search -> {
                 // Respond to navigation item 2 click
+                val searchIntent = Intent(this, SearchActivity::class.java)
+                startActivity(searchIntent)
                 return true
             }
             R.id.new_post -> {
@@ -35,8 +37,6 @@ class SearchActivity : Activity() {
             }
             R.id.profile -> {
                 // Respond to navigation item 2 click
-                val profileIntent = Intent(this, ProfileActivity::class.java)
-                startActivity(profileIntent)
                 return true
             }
             else -> return false
