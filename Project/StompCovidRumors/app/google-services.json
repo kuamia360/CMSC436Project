@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "594000138115",
+    "firebase_url": "https://stompcovidrumors.firebaseio.com",
+    "project_id": "stompcovidrumors",
+    "storage_bucket": "stompcovidrumors.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594000138115:android:0a76149e8517e94399b0b6",
+        "android_client_info": {
+          "package_name": "com.example.stompcovidrumors"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594000138115-80u56tbffgm56cpkluqkc8qj8hkufs6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZI7qw7GPbNTtU1Aivpzq6sTiJtw6Iy1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594000138115-80u56tbffgm56cpkluqkc8qj8hkufs6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

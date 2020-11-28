@@ -5,59 +5,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_green"
-    tools:context=".LogInActivity">
+    tools:context=".SearchActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/log_in"
+        android:text="@string/search"
         android:textSize="45dp"
         android:textAlignment="center"
         android:textColor="@color/color_black"
         android:textStyle="normal|bold"
-        app:layout_constraintBottom_toTopOf="@id/login_username"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/login_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@id/login_password"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/color_black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"/>
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/search_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/password"
+        android:layout_marginTop="80dp"
         android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@id/login_button"
+        android:hint="@string/search"
+        app:layout_constraintBottom_toTopOf="@id/listViewHome"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_username"/>
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <Button
-        android:id="@+id/login_button"
-        android:layout_width="121dp"
+    <ListView
+        android:id="@+id/listViewHome"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="332dp"
-        android:text="@string/log_in"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="80dp"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password"/>
+        app:layout_constraintTop_toBottomOf="@+id/search_bar" />
 
-
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/color_green"
+        app:itemTextColor="@color/color_black"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
