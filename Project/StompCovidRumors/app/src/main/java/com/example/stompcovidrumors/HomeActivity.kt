@@ -5,15 +5,69 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
+import android.util.Log
+import android.widget.ListView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import java.lang.Exception
 
 
 class HomeActivity : Activity() {
+
+    companion object {
+        const val TAG = "Example-FirebaseRealtimeDatabase"
+        const val AUTHOR_NAME = "course.examples.firebase.myhomelibrary.authorname"
+        const val AUTHOR_ID = "course.examples.firebase.myhomelibrary.authorid"
+    }
+
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var databasePosts: DatabaseReference
+    private lateinit var posts: MutableList<Post>
+    private lateinit var listViewPosts: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        //attaching value event listener
+        databasePosts.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                //clearing the previous artist list
+                posts.clear()
+
+                var post: Post? = null
+                //iterating through all the nodes
+                for (postSnapshot in dataSnapshot.children) {
+                    try {
+                        //getting artist
+                        post = postSnapshot.getValue(Post::class.java)
+
+                    } catch (e: Exception) {
+                        //catch exception where the author is not an author
+                        Log.e(TAG, e.toString())
+                    } finally {
+                        //adding author to the list
+                        posts.add(post!!)
+                    }
+                }
+
+                //creating adapter
+                val postAdapter = PostsList(this@HomeActivity, posts)
+                //attaching adapter to the listview
+                listViewPosts.adapter = postAdapter
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
