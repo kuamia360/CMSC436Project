@@ -7,10 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.util.Log
 import android.widget.ListView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import java.lang.Exception
 
 
@@ -30,6 +27,7 @@ class HomeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
+        databasePosts = FirebaseDatabase.getInstance().getReference("stompcovidrumors")
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
     }
