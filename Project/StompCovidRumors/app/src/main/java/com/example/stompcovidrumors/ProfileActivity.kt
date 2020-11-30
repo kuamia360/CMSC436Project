@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 
 class ProfileActivity : Activity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -13,6 +14,8 @@ class ProfileActivity : Activity() {
         setContentView(R.layout.profile)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
+        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        bottomNavigationView.menu.getItem(3).isChecked = true
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {

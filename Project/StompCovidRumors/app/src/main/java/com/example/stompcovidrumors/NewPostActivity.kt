@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Button
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 
 class NewPostActivity : Activity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -16,9 +17,12 @@ class NewPostActivity : Activity() {
         setContentView(R.layout.new_post)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
+        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        bottomNavigationView.menu.getItem(2).isChecked = true
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
+        item.isChecked = true
         when(item.itemId) {
             R.id.home -> {
                 // Respond to navigation item 1 click

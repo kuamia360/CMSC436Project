@@ -7,6 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.util.Log
 import android.widget.ListView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.firebase.database.*
 import java.lang.Exception
 
@@ -30,6 +31,7 @@ class HomeActivity : Activity() {
         databasePosts = FirebaseDatabase.getInstance().getReference("stompcovidrumors")
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
+        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }
 
     override fun onStart() {
@@ -69,6 +71,7 @@ class HomeActivity : Activity() {
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
+        item.isChecked = true
         when(item.itemId) {
             R.id.home -> {
                 // Respond to navigation item 1 click

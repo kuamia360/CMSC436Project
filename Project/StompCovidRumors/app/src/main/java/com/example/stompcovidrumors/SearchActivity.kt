@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 
 class SearchActivity : Activity() {
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -13,9 +14,12 @@ class SearchActivity : Activity() {
         setContentView(R.layout.search)
         bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
+        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        bottomNavigationView.menu.getItem(1).isChecked = true
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
+        item.isChecked = true
         when(item.itemId) {
             R.id.home -> {
                 // Respond to navigation item 1 click
@@ -30,6 +34,7 @@ class SearchActivity : Activity() {
             R.id.new_post -> {
                 // Respond to navigation item 1 click
                 val postIntent = Intent(this, NewPostActivity::class.java)
+                item.isChecked = true
                 startActivity(postIntent)
                 return true
             }
