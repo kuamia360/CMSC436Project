@@ -6,10 +6,12 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.ListView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.firebase.database.*
 import java.lang.Exception
+import java.util.ArrayList
 
 
 class HomeActivity : Activity() {
@@ -29,7 +31,9 @@ class HomeActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         databasePosts = FirebaseDatabase.getInstance().getReference("stompcovidrumors")
-        bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        posts = ArrayList()
+        bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
+        listViewPosts = findViewById<View>(R.id.listViewHome) as ListView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
         bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
     }

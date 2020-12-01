@@ -3,13 +3,19 @@
     <string name="sign_up">Sign Up</string>
     <string name="log_in">Log In</string>
     <string name="create_account">Create Account</string>
-    <string name="username">Username</string>
-    <string name="password">Password</string>
+    <string name="username">Set your Username</string>
+    <string name="password">Set your Password</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
     <string name="home">Home</string>
+    <string name="timeline">Timeline</string>
     <string name="search">Search</string>
-    <string name="new_post">Add Post</string>
-    <string name="what">What happened?</string>
-    <string name="where">Where?</string>
+    <string name="searchLocate">Search by Location</string>
+    <string name="new_post">Add Rumor</string>
+    <string name="new_post_menu">New Rumor</string>
+    <string name="submit_post">Submit Post</string>
+    <string name="what">Type Rumor Details</string>
+    <string name="where">Location of the COVID-19 Rumor</string>
     <string name="profile">Profile</string>
     <string name="save">Save</string>
 </resources>
