@@ -29,8 +29,6 @@ class NewPostActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.new_post)
 
-        val intent = intent
-
         editTextWhat = findViewById<View>(R.id.what) as EditText
         editTextWhere = findViewById<View>(R.id.where) as EditText
         addPostButton = findViewById<View>(R.id.submit_post_button) as Button
@@ -41,7 +39,7 @@ class NewPostActivity : Activity() {
 
         bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
-        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        bottomNavigationView.menu.getItem(2).isChecked = true
     }
 
     private fun addNewPost() {
@@ -62,7 +60,6 @@ class NewPostActivity : Activity() {
 
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
-        item.isChecked = true
         when(item.itemId) {
             R.id.home -> {
                 // Respond to navigation item 1 click
@@ -86,7 +83,7 @@ class NewPostActivity : Activity() {
                 startActivity(profileIntent)
                 return true
             }
-            else -> return false
+            else -> return true
         }
         return false
     }
