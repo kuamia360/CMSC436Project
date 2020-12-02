@@ -13,11 +13,9 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val logIn = findViewById<TextView>(R.id.log_in)
         val signUp = findViewById<Button>(R.id.sign_up_button)
-
+        val logIn = findViewById<Button>(R.id.log_in)
         logIn.setOnClickListener{goToLogin()}
-
         signUp.setOnClickListener{goToCreateAccount()}
     }
 

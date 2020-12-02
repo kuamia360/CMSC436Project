@@ -6,10 +6,12 @@ import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.util.Log
+import android.view.View
 import android.widget.ListView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.firebase.database.*
 import java.lang.Exception
+import java.util.ArrayList
 
 
 class HomeActivity : Activity() {
@@ -29,9 +31,11 @@ class HomeActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         databasePosts = FirebaseDatabase.getInstance().getReference("stompcovidrumors")
-        bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        posts = ArrayList()
+        bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
+        listViewPosts = findViewById<View>(R.id.listViewHome) as ListView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
-        bottomNavigationView.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+        bottomNavigationView.menu.getItem(0).isChecked = true
     }
 
     override fun onStart() {
@@ -71,34 +75,27 @@ class HomeActivity : Activity() {
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
-        item.isChecked = true
         when(item.itemId) {
             R.id.home -> {
-                // Respond to navigation item 1 click
                 return true
             }
             R.id.search -> {
-                // Respond to navigation item 2 click
                 val searchIntent = Intent(this, SearchActivity::class.java)
                 startActivity(searchIntent)
                 return true
             }
             R.id.new_post -> {
-                // Respond to navigation item 1 click
                 val postIntent = Intent(this, NewPostActivity::class.java)
                 startActivity(postIntent)
                 return true
             }
             R.id.profile -> {
-                // Respond to navigation item 2 click
                 val profileIntent = Intent(this, ProfileActivity::class.java)
                 startActivity(profileIntent)
                 return true
             }
-            else -> return false
+            else -> return true
         }
         return false
     }
-
-
 }

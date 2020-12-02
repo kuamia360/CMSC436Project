@@ -13,14 +13,14 @@ class PostsList(private val context: Activity, private var posts: List<Post>) :
         val listViewItem =
             inflater.inflate(R.layout.post_layout, parent, false)
 
-        val textViewName = listViewItem.findViewById<TextView>(R.id.textViewName)
-        val textViewCountry = listViewItem.findViewById<TextView>(R.id.textViewLocation)
-        val textViewContent = listViewItem.findViewById<TextView>(R.id.textViewContent)
+        val whatView = listViewItem.findViewById<TextView>(R.id.textViewWhat)
+        val whereView = listViewItem.findViewById<TextView>(R.id.textViewWhere)
+//        val textViewContent = listViewItem.findViewById<TextView>(R.id.textViewContent)
 
         val post = posts[position]
-        textViewName.text = post.authorName
-        textViewCountry.text = post.authorLocation
-        textViewContent.text = post.content
+//        whatView.text = post.authorName
+        whatView.text = post.authorLocation
+        whereView.text = post.content
 
         return listViewItem
     }

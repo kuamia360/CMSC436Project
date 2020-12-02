@@ -9,12 +9,13 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/new_post"
         android:textSize="45dp"
         android:textAlignment="center"
         android:textColor="@color/color_black"
+        android:background="@color/color_white"
         android:textStyle="normal|bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -29,33 +30,78 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"/>
 
+    <TextView
+        android:id="@+id/WhatHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what"
+        android:layout_marginTop="85dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/color_black"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"/>
+
+
     <EditText
         android:id="@+id/what"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="400dp"
         android:ems="10"
-        android:hint="@string/what"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
+        android:textColor="@color/color_black"
+        android:background="@color/color_white"
+        app:layout_constraintTop_toBottomOf="@+id/WhatHeading"
         app:layout_constraintVertical_bias="0.176" />
 
+    <TextView
+        android:id="@+id/WhereHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/where"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="260dp"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/color_black"
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/what"/>
 
     <EditText
         android:id="@+id/where"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="260dp"
         android:ems="10"
-        android:hint="@string/where"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/what"
+        android:background="@color/color_white"
+        app:layout_constraintTop_toBottomOf="@+id/WhereHeading"
         app:layout_constraintVertical_bias="0.206" />
+
+    <Button
+        android:id="@+id/submit_post_button"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="180dp"
+        android:text="@string/submit_post"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/where"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -65,7 +111,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:background="@color/color_green"
+        android:background="@color/color_white"
         app:itemTextColor="@color/color_black"
         app:menu="@menu/bottom_menu" />
 
