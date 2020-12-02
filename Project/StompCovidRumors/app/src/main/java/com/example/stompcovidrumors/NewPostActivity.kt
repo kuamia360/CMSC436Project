@@ -34,7 +34,6 @@ class NewPostActivity : Activity() {
         addPostButton = findViewById<View>(R.id.submit_post_button) as Button
 
         databaseUsers = FirebaseDatabase.getInstance().getReference("stompcovidrumors")
-
         addPostButton.setOnClickListener{ addNewPost() }
 
         bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView

@@ -15,10 +15,7 @@ class MainActivity : Activity() {
 
         val signUp = findViewById<Button>(R.id.sign_up_button)
         val logIn = findViewById<Button>(R.id.log_in)
-
-
         logIn.setOnClickListener{goToLogin()}
-
         signUp.setOnClickListener{goToCreateAccount()}
     }
 
