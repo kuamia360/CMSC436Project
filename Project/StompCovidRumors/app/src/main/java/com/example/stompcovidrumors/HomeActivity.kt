@@ -62,6 +62,7 @@ class HomeActivity : Activity() {
                     }
                 }
 
+                posts = posts.asReversed()
                 //creating adapter
                 val postAdapter = PostsList(this@HomeActivity, posts)
                 //attaching adapter to the listview
