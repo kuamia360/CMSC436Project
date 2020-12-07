@@ -22,8 +22,8 @@ class PostsList(private val context: Activity, private var posts: List<Post>) :
 
         val post = posts[position]
 //        whatView.text = post.authorName
-        whatView.text = post.authorLocation
-        whereView.text = post.content
+        whatView.text = "Rumor: " + post.content
+        whereView.text = "Location: " + post.authorLocation
         nameView.text = post.authorName
         upvoteView.text = post.upVotesArray.count().toString()
         downvoteView.text = post.downVotesArray.count().toString()
