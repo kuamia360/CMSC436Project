@@ -49,9 +49,11 @@ class NewPostActivity : Activity() {
             val id = (databaseUsers.push()).key.toString()
             var user = intent.getStringExtra("user")
             if (user == null) {
-                user = id
+                user = "Anonymous"
             }
-            val post = Post(user, whatInfo, whereInfo)
+            val post = Post(postId = id, authorName = user, content = whatInfo,
+                authorLocation = whereInfo, upVotes = 0, upVotesArray = ArrayList(), downVotes = 0, downVotesArray = ArrayList()
+            )
             databaseUsers.child(id).setValue(post)
             Toast.makeText(this, "Post saved", Toast.LENGTH_LONG).show()
             editTextWhat.setText("")

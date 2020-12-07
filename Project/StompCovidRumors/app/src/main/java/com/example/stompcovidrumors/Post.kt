@@ -1,5 +1,5 @@
 package com.example.stompcovidrumors
 
-data class Post (val authorName: String = "", val authorLocation: String = "", val content: String = "",
-                 val upVotesArray: MutableList<User> = ArrayList(), val downVotesArray: MutableList<User> = ArrayList(),
-                 val upVotes: Int = 0, val downVotes:  Int = 0)
+data class Post (val postId : String = "", val authorName: String = "", val authorLocation: String = "", val content: String = "",
+                 val upVotesArray: MutableList<String> = ArrayList(), val downVotesArray: MutableList<String> = ArrayList(),
+                 var upVotes: Int = 0, var downVotes:  Int = 0)

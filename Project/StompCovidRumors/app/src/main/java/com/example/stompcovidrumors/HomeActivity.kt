@@ -7,7 +7,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.ListView
+import android.widget.TextView
 import com.google.firebase.database.*
 import java.lang.Exception
 import java.util.ArrayList
@@ -25,6 +27,11 @@ class HomeActivity : Activity() {
     private lateinit var databasePosts: DatabaseReference
     private lateinit var posts: MutableList<Post>
     private lateinit var listViewPosts: ListView
+    private lateinit var upVoteImageView: ImageView
+    private lateinit var downVoteImageView: ImageView
+    private lateinit var upVoteTextView: TextView
+    private lateinit var downVoteTextView: TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +42,7 @@ class HomeActivity : Activity() {
         listViewPosts = findViewById<View>(R.id.listViewHome) as ListView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
         bottomNavigationView.menu.getItem(0).isChecked = true
+
     }
 
     override fun onStart() {
@@ -64,10 +72,14 @@ class HomeActivity : Activity() {
                 posts = posts.asReversed()
                 //creating adapter
                 val postAdapter = PostsList(this@HomeActivity, posts)
+                var currUser = intent.getStringExtra("user")
+                if (currUser == null) {
+                    currUser = "anonymous"
+                }
+                postAdapter.setCurrentUser(currUser)
                 //attaching adapter to the listview
                 listViewPosts.adapter = postAdapter
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
 
             }
