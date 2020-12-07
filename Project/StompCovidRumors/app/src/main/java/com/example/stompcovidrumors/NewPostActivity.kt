@@ -47,7 +47,7 @@ class NewPostActivity : Activity() {
 
         if (!TextUtils.isEmpty(whatInfo) && !TextUtils.isEmpty(whereInfo)) {
             val id = (databaseUsers.push()).key.toString()
-            val post = Post(id, whatInfo, whereInfo)
+            val post = Post(id, whereInfo, whatInfo)
             databaseUsers.child(id).setValue(post)
             Toast.makeText(this, "Post saved", Toast.LENGTH_LONG).show()
             editTextWhat.setText("")

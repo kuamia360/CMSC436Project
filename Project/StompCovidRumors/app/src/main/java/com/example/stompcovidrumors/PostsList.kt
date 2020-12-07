@@ -15,12 +15,13 @@ class PostsList(private val context: Activity, private var posts: List<Post>) :
 
         val whatView = listViewItem.findViewById<TextView>(R.id.textViewWhat)
         val whereView = listViewItem.findViewById<TextView>(R.id.textViewWhere)
+
 //        val textViewContent = listViewItem.findViewById<TextView>(R.id.textViewContent)
 
         val post = posts[position]
 //        whatView.text = post.authorName
-        whatView.text = post.authorLocation
-        whereView.text = post.content
+        whatView.text = "Rumor: " + post.content
+        whereView.text = "Location: " + post.authorLocation
 
         return listViewItem
     }

@@ -52,11 +52,11 @@ class SearchActivity : Activity() {
                 //iterating through all the nodes
                 for (postSnapshot in dataSnapshot.children) {
                     try {
-                        //getting artist
+                        //getting post
                         post = postSnapshot.getValue(Post::class.java)
 
                     } catch (e: Exception) {
-                        //catch exception where the author is not an author
+                        //catch exception where the post is not an post
                         Log.e(HomeActivity.TAG, e.toString())
                     } finally {
                         //adding author to the list
@@ -68,23 +68,29 @@ class SearchActivity : Activity() {
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
                     override fun onQueryTextChange(newText: String): Boolean {
-//                        postAdapter.getPosition(0).
-//                        postAdapter.filter.filter(newText)
                         return false
                     }
 
                     override fun onQueryTextSubmit(query: String): Boolean {
-                        for (item in posts) {
-                            if (item.authorLocation.equals(query, true)) {
-                                searchResults.add(item)
-                            }
-                            // body of loop
+                        if (searchResults.size > 0) {
+                            searchResults.clear()
+                            val tempAdapt = PostsList(this@SearchActivity, searchResults)
+                            listViewPosts.adapter = tempAdapt
                         }
-                        return false
+                      searchResults.clear()
+                        for (i in 0 until posts.size) {
+                          //  Log.i(posts[i].authorLocation," In here3")
+                            if (posts[i].authorLocation.equals(query, true)) {
+                               // Log.i("Yo: " + posts[i].authorLocation," In here man")
+                                searchResults.add(posts[i]!!)
+                            }
+                        }
+                        return true
                     }
 
                 })
-                searchResults = searchResults.asReversed()
+                //Log.i("Yo: " + searchResults.size,", should be 2")
+//                searchResults = searchResults.asReversed()
                 //creating adapter
                 val postAdapter = PostsList(this@SearchActivity, searchResults)
                 //attaching adapter to the listview
