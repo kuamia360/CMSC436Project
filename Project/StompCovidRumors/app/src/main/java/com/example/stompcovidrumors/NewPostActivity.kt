@@ -47,7 +47,11 @@ class NewPostActivity : Activity() {
 
         if (!TextUtils.isEmpty(whatInfo) && !TextUtils.isEmpty(whereInfo)) {
             val id = (databaseUsers.push()).key.toString()
-            val post = Post(id, whatInfo, whereInfo)
+            var user = intent.getStringExtra("user")
+            if (user == null) {
+                user = id
+            }
+            val post = Post(user, whatInfo, whereInfo)
             databaseUsers.child(id).setValue(post)
             Toast.makeText(this, "Post saved", Toast.LENGTH_LONG).show()
             editTextWhat.setText("")
@@ -59,16 +63,19 @@ class NewPostActivity : Activity() {
 
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
+        val user = intent.getStringExtra("user")
         when(item.itemId) {
             R.id.home -> {
                 // Respond to navigation item 1 click
                 val homeIntent = Intent(this, HomeActivity::class.java)
+                homeIntent.putExtra("user", user)
                 startActivity(homeIntent)
                 return true
             }
             R.id.search -> {
                 // Respond to navigation item 2 click
                 val searchIntent = Intent(this, SearchActivity::class.java)
+                searchIntent.putExtra("user", user)
                 startActivity(searchIntent)
                 return true
             }
@@ -79,6 +86,7 @@ class NewPostActivity : Activity() {
             R.id.profile -> {
                 // Respond to navigation item 2 click
                 val profileIntent = Intent(this, ProfileActivity::class.java)
+                profileIntent.putExtra("user", user)
                 startActivity(profileIntent)
                 return true
             }

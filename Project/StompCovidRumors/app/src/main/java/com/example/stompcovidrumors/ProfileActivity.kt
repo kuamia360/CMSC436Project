@@ -19,19 +19,23 @@ class ProfileActivity : Activity() {
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
+        val user = intent.getStringExtra("user")
         when(item.itemId) {
             R.id.home -> {
                 val homeIntent = Intent(this, HomeActivity::class.java)
+                homeIntent.putExtra("user", user)
                 startActivity(homeIntent)
                 return true
             }
             R.id.search -> {
                 val searchIntent = Intent(this, SearchActivity::class.java)
+                searchIntent.putExtra("user", user)
                 startActivity(searchIntent)
                 return true
             }
             R.id.new_post -> {
                 val postIntent = Intent(this, NewPostActivity::class.java)
+                postIntent.putExtra("user", user)
                 startActivity(postIntent)
                 return true
             }

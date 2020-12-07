@@ -43,8 +43,8 @@ class LogInActivity : Activity() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
-                    val user = mAuth!!.currentUser
-                    homeActivityIntent.putExtra("user", user)
+//                    val user = mAuth!!.currentUser
+                    homeActivityIntent.putExtra("user", email)
                     startActivity(homeActivityIntent)
                 } else {
                     // If sign in fails, display a message to the user.
