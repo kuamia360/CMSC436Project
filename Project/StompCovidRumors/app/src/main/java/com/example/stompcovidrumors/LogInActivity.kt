@@ -1,7 +1,5 @@
 package com.example.stompcovidrumors
 
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 import android.R.attr.password
 import android.app.Activity
 import android.content.Intent
@@ -37,11 +35,7 @@ class LogInActivity : Activity() {
         val email = findViewById<TextView>(R.id.login_username).text.toString()
         val password = findViewById<TextView>(R.id.login_password).text.toString()
         val homeActivityIntent = Intent(this, HomeActivity::class.java)
-        val validator = Validators()
 
-        if (!validator.validPassword(password)) {
-            Toast.makeText(this, "Passwords should be at least 4 characters with 1 letter and 1 number", Toast.LENGTH_LONG).show()
-        } else {
             mAuth!!.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     this
@@ -63,6 +57,6 @@ class LogInActivity : Activity() {
 
                     // ...
                 }
-        }
+
     }
 }

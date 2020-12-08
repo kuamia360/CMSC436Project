@@ -43,6 +43,17 @@ class CreateAccountActivity : Activity(){
         val email = findViewById<TextView>(R.id.create_account_username).text.toString()
         val password = findViewById<TextView>(R.id.create_account_password).text.toString()
         val homeActivityIntent = Intent(this, HomeActivity::class.java)
+        val validator = Validators()
+
+        if (!validator.validEmail(email)) {
+            Toast.makeText(this, "Must be a valid email", Toast.LENGTH_LONG).show()
+            return
+        }
+
+        if (!validator.validPassword(password)) {
+            Toast.makeText(this, "Passwords should be at least 4 characters with 1 letter and 1 number", Toast.LENGTH_LONG).show()
+            return
+        }
 
         mAuth!!.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(
@@ -51,8 +62,7 @@ class CreateAccountActivity : Activity(){
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
-                    val user = mAuth!!.currentUser
-                    homeActivityIntent.putExtra("user", user)
+                    homeActivityIntent.putExtra("user", email)
                     startActivity(homeActivityIntent)
                 } else {
                     // If sign in fails, display a message to the user.
@@ -62,8 +72,6 @@ class CreateAccountActivity : Activity(){
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-
-                // ...
             }
     }
 }

@@ -36,7 +36,7 @@ class PostsList(private val context: Activity, private var posts: List<Post>) :
         nameView.text = post.authorName
         upvoteView.text = (post.upVotesArray.size - post.downVotesArray.size).toString()
 
-        if (user.contains("umd.edu")) {
+        if (user.contains("umd.admin.edu")) {
             approved.setOnClickListener { changeApproval(post) }
         }
 
