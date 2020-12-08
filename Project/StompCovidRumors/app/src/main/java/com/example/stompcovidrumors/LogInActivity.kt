@@ -1,5 +1,7 @@
 package com.example.stompcovidrumors
 
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import android.R.attr.password
 import android.app.Activity
 import android.content.Intent
@@ -35,27 +37,32 @@ class LogInActivity : Activity() {
         val email = findViewById<TextView>(R.id.login_username).text.toString()
         val password = findViewById<TextView>(R.id.login_password).text.toString()
         val homeActivityIntent = Intent(this, HomeActivity::class.java)
+        val validator = Validators()
 
-        mAuth!!.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(
-                this
-            ) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
+        if (!validator.validPassword(password)) {
+            Toast.makeText(this, "Passwords should be at least 4 characters with 1 letter and 1 number", Toast.LENGTH_LONG).show()
+        } else {
+            mAuth!!.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                    this
+                ) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "signInWithEmail:success")
 //                    val user = mAuth!!.currentUser
-                    homeActivityIntent.putExtra("user", email)
-                    startActivity(homeActivityIntent)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(
-                        this, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                        homeActivityIntent.putExtra("user", email)
+                        startActivity(homeActivityIntent)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "signInWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            this, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
 
-                // ...
-            }
+                    // ...
+                }
+        }
     }
 }
