@@ -31,6 +31,8 @@ class HomeActivity : Activity() {
     private lateinit var downVoteImageView: ImageView
     private lateinit var upVoteTextView: TextView
     private lateinit var downVoteTextView: TextView
+    private lateinit var currentUser : String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

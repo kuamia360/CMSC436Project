@@ -5,17 +5,78 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
+import android.util.Log
+import android.widget.Toast
+
 
 class ProfileActivity : Activity() {
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var saveButton : Button
+//    private lateinit var setUserName : EditText
+    private lateinit var setPassword : EditText
+    var user = FirebaseAuth.getInstance().currentUser
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile)
+//        setUserName = findViewById<EditText>(R.id.profile_username)
+        setPassword = findViewById<EditText>(R.id.profile_password)
+        saveButton = findViewById<Button>(R.id.save_button)
         bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
         bottomNavigationView.menu.getItem(3).isChecked = true
+        saveButton.setOnClickListener { saveUserInfo() }
+    }
+
+    fun saveUserInfo() {
+
+//        if (user != null && setUserName.text.toString().isNotEmpty()) {
+//            // Name, email address, and profile photo Url
+//            val newUserName = setUserName.text.toString()
+//
+//            val profileUpdates = UserProfileChangeRequest.Builder()
+//                .setDisplayName(newUserName)
+//                .build()
+//
+//            user!!.updateProfile(profileUpdates)
+//                .addOnCompleteListener { task ->
+//                    if (task.isSuccessful) {
+//                        Log.d("TAG", "User profile updated.")
+//                    }
+//                    else {
+//                        Toast.makeText(
+//                            this, "failed to change profile.",
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//                    }
+//                }
+//        }
+
+        if (user != null && setPassword.text.toString().isNotEmpty()) {
+            val newPassword = setPassword.text.toString()
+
+            user!!.updatePassword(newPassword).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("TAG", "User profile updated.")
+                        Toast.makeText(
+                            this, "Password changed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        setPassword.setText("")
+                    }
+                    else {
+                        Toast.makeText(
+                            this, task.exception.toString(),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+        }
     }
 
     private fun bottomNavigationListener(item : MenuItem) : Boolean {
@@ -47,3 +108,4 @@ class ProfileActivity : Activity() {
         return false
     }
 }
+
