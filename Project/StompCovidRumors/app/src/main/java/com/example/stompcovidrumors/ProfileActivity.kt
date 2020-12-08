@@ -19,6 +19,7 @@ class ProfileActivity : Activity() {
     private lateinit var saveButton : Button
 //    private lateinit var setUserName : EditText
     private lateinit var setPassword : EditText
+    private lateinit var logoutBtn: Button
     var user = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,35 +28,20 @@ class ProfileActivity : Activity() {
 //        setUserName = findViewById<EditText>(R.id.profile_username)
         setPassword = findViewById<EditText>(R.id.profile_password)
         saveButton = findViewById<Button>(R.id.save_button)
+        logoutBtn = findViewById<View>(R.id.logout_button) as Button
         bottomNavigationView = findViewById<View>(R.id.bottom_navigation) as BottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener { item -> bottomNavigationListener(item) }
         bottomNavigationView.menu.getItem(3).isChecked = true
         saveButton.setOnClickListener { saveUserInfo() }
+        logoutBtn.setOnClickListener{ logout() }
+    }
+
+    private fun logout() {
+        val mainIntent = Intent(this, MainActivity::class.java)
+        startActivity(mainIntent)
     }
 
     fun saveUserInfo() {
-
-//        if (user != null && setUserName.text.toString().isNotEmpty()) {
-//            // Name, email address, and profile photo Url
-//            val newUserName = setUserName.text.toString()
-//
-//            val profileUpdates = UserProfileChangeRequest.Builder()
-//                .setDisplayName(newUserName)
-//                .build()
-//
-//            user!!.updateProfile(profileUpdates)
-//                .addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        Log.d("TAG", "User profile updated.")
-//                    }
-//                    else {
-//                        Toast.makeText(
-//                            this, "failed to change profile.",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                }
-//        }
 
         if (user != null && setPassword.text.toString().isNotEmpty()) {
             val newPassword = setPassword.text.toString()

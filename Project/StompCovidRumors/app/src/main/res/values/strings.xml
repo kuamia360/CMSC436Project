@@ -4,10 +4,10 @@
     <string name="log_in">Log In</string>
     <string name="create_account">Create Account</string>
     <string name="username">Set your Username</string>
-    <string name="registerUserName">Set your Username/Email</string>
-    <string name="disclaimerText">Login with \'@umd.edu\' email to approve/disapprove rumors</string>
+    <string name="registerUserName">Username/Email</string>
+    <string name="disclaimerText">Login with \'@umd.admin.edu\' email to approve/disapprove rumors</string>
     <string name="password">Change your Password</string>
-    <string name="login_username">Username</string>
+    <string name="login_username">Username</string>s
     <string name="login_password">Password</string>
     <string name="home">Home</string>
     <string name="timeline">Timeline</string>
@@ -20,4 +20,5 @@
     <string name="where">Location of the COVID-19 Rumor</string>
     <string name="profile">Profile</string>
     <string name="save">Save</string>
+    <string name="logout">Log Out</string>
 </resources>

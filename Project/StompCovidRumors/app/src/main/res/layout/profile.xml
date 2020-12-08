@@ -30,36 +30,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"/>
 
-<!--    <TextView-->
-<!--        android:id="@+id/UserNameHeading"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/username"-->
-<!--        android:layout_marginTop="85dp"-->
-<!--        android:textSize="20dp"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="@color/color_black"-->
-<!--        android:textStyle="normal|bold"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/divider"/>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/profile_username"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="400dp"-->
-<!--        android:layout_marginTop="15dp"-->
-<!--        android:ems="10"-->
-<!--        android:inputType="textEmailAddress"-->
-<!--        app:layout_constraintHorizontal_bias="0.497"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent"-->
-<!--        android:textColor="@color/color_black"-->
-<!--        android:background="@color/color_white"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/UserNameHeading" />-->
-
-
     <TextView
         android:id="@+id/PasswordHeading"
         android:layout_width="wrap_content"
@@ -102,6 +72,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_password" />
 
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save_button"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -113,5 +93,7 @@
         android:background="@color/color_white"
         app:itemTextColor="@color/color_black"
         app:menu="@menu/bottom_menu" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
